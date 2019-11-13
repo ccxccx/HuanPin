@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="i.HuanPin">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <application
+        android:icon="@drawable/i"
+        android:label="@string/app_name">
+        <activity android:name="ac">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="ac2"/>
+        <activity android:name="ac3"/>
+        <activity android:name="ac4"/>
+        <activity android:name="ac5"/>
+        <activity android:name="ac6"/>
+        <activity android:name="ac7"/>
+        <activity android:name="ac8"/>
+        <activity android:name="ac9"/>
+        <activity android:name="ac10"/>
+        <activity android:name="ac11"/>
+        <activity android:name="ac12"/>
+    </application>
+</manifest>
