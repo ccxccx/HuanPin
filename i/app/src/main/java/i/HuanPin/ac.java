@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ public class ac extends Activity implements View.OnClickListener
     {try{
         super.onCreate(savedInstanceState);p=PasswordTransformationMethod.getInstance();
         LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
+        ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i);
         l.addView(e=new EditText(this));l.addView(e2=new EditText(this));
         l.addView(b=new Button(this));l.addView(b2=new Button(this));
         e.setHint("请输入账号");e2.setHint("请输入密码");e2.setTransformationMethod(p);
@@ -42,7 +44,7 @@ public class ac extends Activity implements View.OnClickListener
             public void run()
             {try{
                 Class.forName("com.mysql.jdbc.Driver");
-                c=DriverManager.getConnection("jdbc:mysql://112.74.89.58:39127/huanpin?useSSL=false","root","ccx");
+                c=DriverManager.getConnection("jdbc:mysql://172.81.211.138:3306/huanpin?useSSL=false","root","ccx");
                 s=c.createStatement();
             }catch(Exception e){e.printStackTrace();}}
         });

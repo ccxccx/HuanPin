@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ public class ac3 extends Activity implements View.OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
+		ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i);
         l.addView(b=new Button(this));b.setText("添加商店");b.setOnClickListener(this);
         l.addView(b2=new Button(this));b2.setText("我的商店");b2.setOnClickListener(this);
 		l.addView(b3=new Button(this));b3.setText("商店列表");b3.setOnClickListener(this);
