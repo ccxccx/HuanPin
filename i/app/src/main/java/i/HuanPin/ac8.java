@@ -27,6 +27,7 @@ public class ac8 extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(l2=new ListView(this));l2.setAdapter(a=new ba());
+		l2.setBackgroundColor(0xffffffcc);
 	}
 	class ba extends BaseAdapter
 	{

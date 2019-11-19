@@ -30,8 +30,10 @@ public class ac2 extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        //*
         LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-        ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i);
+        l.setBackgroundColor(0xffffffcc);
+        ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i,-1,ac.w/2);
         l.addView(e=new EditText(this));e.setHint("请输入账号");
         l.addView(e2=new EditText(this));e2.setHint("请输入密码");
 		l.addView(e3=new EditText(this));e3.setHint("请确认密码");
@@ -39,6 +41,13 @@ public class ac2 extends Activity implements View.OnClickListener
 		l.addView(e4=new EditText(this));e4.setHint("请输入联系方式");
 		l.addView(b=new Button(this));b.setText("注册");b.setOnClickListener(this);
         l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
+        //*/
+        /*
+        setContentView(R.layout.l2);
+        e=findViewById(R.id.e21);e2=findViewById(R.id.e22);e3=findViewById(R.id.e23);e4=findViewById(R.id.e24);
+        b=findViewById(R.id.b21);t=findViewById(R.id.t21);
+        b.setOnClickListener(this);
+        //*/
     }
     public void onClick(View v)
     {

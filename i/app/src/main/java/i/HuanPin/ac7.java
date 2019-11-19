@@ -23,6 +23,7 @@ public class ac7 extends Activity implements View.OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		LinearLayout l2=new LinearLayout(this);setContentView(l2);l2.setOrientation(LinearLayout.VERTICAL);
+		l2.setBackgroundColor(0xffffffcc);
 		l2.addView(e=new EditText(this));e.setHint("请输入您要搜索的关键词");
 		l2.addView(b=new Button(this));b.setText("搜索");b.setOnClickListener(this);
 		ListView l=new ListView(this);l2.addView(l);

@@ -31,6 +31,7 @@ public class ac6 extends Activity implements View.OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
+		l.setBackgroundColor(0xffffffcc);
 		l.addView(e=new EditText(this));e.setHint("请输入商品名");
 		l.addView(e2=new EditText(this));e2.setHint("请输入价格");
 		l.addView(b=new Button(this));b.setText("添加商品");b.setOnClickListener(this);

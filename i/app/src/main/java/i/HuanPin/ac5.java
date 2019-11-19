@@ -20,6 +20,7 @@ public class ac5 extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		ListView l=new ListView(this);setContentView(l);
+		l.setBackgroundColor(0xffffffcc);
 		l.setAdapter(new ba());
 	}
 	class ba extends BaseAdapter

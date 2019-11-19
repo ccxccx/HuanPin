@@ -22,7 +22,7 @@ import java.sql.Statement;
 public class ac extends Activity implements View.OnClickListener
 {
     EditText e,e2;Button b,b2;TextView t;int i;static Statement s;String u;
-    static PasswordTransformationMethod p;static String a;
+    static PasswordTransformationMethod p;static String a;static int w;
     static Connection c;
     Handler h=new Handler()
     {
@@ -30,15 +30,28 @@ public class ac extends Activity implements View.OnClickListener
     };
     protected void onCreate(Bundle savedInstanceState)
     {try{
-        super.onCreate(savedInstanceState);p=PasswordTransformationMethod.getInstance();
+        super.onCreate(savedInstanceState);
+        //*
         LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-        ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i);
+        l.setBackgroundColor(0xffffffcc);
+        //l.addView(i,-2,-2);不行
+        //l.addView(i,new LinearLayout.LayoutParams(-2,-2,1));也不行
+        w=getWindowManager().getDefaultDisplay().getWidth();
+        ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i,-1,w/2);
         l.addView(e=new EditText(this));l.addView(e2=new EditText(this));
         l.addView(b=new Button(this));l.addView(b2=new Button(this));
-        e.setHint("请输入账号");e2.setHint("请输入密码");e2.setTransformationMethod(p);
+        e.setHint("请输入账号");e2.setHint("请输入密码");e2.setTransformationMethod(p=PasswordTransformationMethod.getInstance());
         b.setText("登录");b2.setText("注册");
         b.setOnClickListener(this);b2.setOnClickListener(this);
         l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
+        //*/
+        /*
+        setContentView(R.layout.l);
+        e=findViewById(R.id.e);e2=findViewById(R.id.e2);
+        b=findViewById(R.id.b);b2=findViewById(R.id.b2);
+        b.setOnClickListener(this);b2.setOnClickListener(this);
+        t=findViewById(R.id.t);
+        //*/
         Thread t=new Thread(new Runnable()
         {
             public void run()

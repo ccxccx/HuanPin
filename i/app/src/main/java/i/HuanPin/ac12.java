@@ -30,6 +30,7 @@ public class ac12 extends Activity
 	void f()
 	{
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
+		l.setBackgroundColor(0xffffffcc);
 		TextView t=new TextView(this);l.addView(t);t.setText("正在拼单的：");
 		LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(-1,0,1);
 		ListView l2=new ListView(this);l.addView(l2,p);l2.setAdapter(new ba());
