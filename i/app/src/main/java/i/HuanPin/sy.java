@@ -23,8 +23,8 @@ public class sy extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		//LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-        //l.addView(b=new Button(this));
-        //b.setText("登录<br>1\n2&#10;3");
+        //l.addView(b9=new Button(this));
+        //b9.setText("登录<br>1\n2&#10;3");
 		//l.addView(t=new TextView(this));
 		setContentView(R.layout.l10);
 		//FragmentActivity

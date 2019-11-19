@@ -18,11 +18,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 public class ac9 extends Activity implements View.OnClickListener
 {
-	EditText e;Button b;Statement s=ac.s;ba a2;
-	List<String>l2=new ArrayList<>(),l4,l5=new ArrayList<>(),l6;
+	EditText e2;Button b9;Statement s=ac.s;ba2 a3;
+	List<String>l9=new ArrayList<>(),l11,l12=new ArrayList<>(),l13;
 	TextView t;int i;String u;
 	Handler h=new Handler()
 	{
@@ -33,8 +33,11 @@ public class ac9 extends Activity implements View.OnClickListener
 		super.onCreate(savedInstanceState);
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
 		l.setBackgroundColor(0xffffffcc);
-		l.addView(e=new EditText(this));e.setHint("请输入您要搜索的关键词");
-		l.addView(b=new Button(this));b.setText("搜索");b.setOnClickListener(this);
+		l.addView(e2=new EditText(this));
+		e2.setHint("请输入您要搜索的关键词");
+		l.addView(b9=new Button(this));
+		b9.setText("搜索");
+		b9.setOnClickListener(this);
 		l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
 		Thread t=new Thread(new Runnable()
 		{
@@ -43,10 +46,10 @@ public class ac9 extends Activity implements View.OnClickListener
 				ResultSet r=s.executeQuery("select * from t4 where 状态=1&&账号!='"+ac.a+"'");
 				for(;r.next();)
 				{
-					l2.add("店名："+r.getString(2)+"\n地址："+r.getString(3)+"\n最晚时间："+r.getString(4)
+					l9.add("店名："+r.getString(2)+"\n地址："+r.getString(3)+"\n最晚时间："+r.getString(4)
 							+"\n商品："+r.getString(5)+"\n价格："+r.getString(6)+"\n起送费："+r.getString(7)
 							+"\n联系方式："+r.getString(8));
-					l5.add(r.getString(2));
+					l12.add(r.getString(2));
 				}
 				r.close();
 			}catch(Exception e){e.printStackTrace();}}
@@ -54,11 +57,11 @@ public class ac9 extends Activity implements View.OnClickListener
 		t.start();
 		t.join();
 		ListView l3=new ListView(this);l.addView(l3);
-		l3.setAdapter(a2=new ba());
+		l3.setAdapter(a3=new ba2());
 	}catch(Exception e){e.printStackTrace();}}
-	class ba extends BaseAdapter
+	class ba2 extends BaseAdapter
 	{
-		public int getCount(){return l2.size();}
+		public int getCount(){return l9.size();}
 		public Object getItem(int position){return null;}
 		public long getItemId(int position){return 0;}
 		class i{TextView t;Button b;i(TextView i,Button j){t=i;b=j;}}
@@ -73,7 +76,7 @@ public class ac9 extends Activity implements View.OnClickListener
 				l3.addView(a.b);a.b.setText("和他拼单");
 			}
 			else a=(i)l3.getTag();
-			a.t.setText(l2.get(i));
+			a.t.setText(l9.get(i));
 			a.b.setOnClickListener(new View.OnClickListener()
 			{
 				public void onClick(View v)
@@ -82,11 +85,11 @@ public class ac9 extends Activity implements View.OnClickListener
 					{
 						public void run()
 						{try{
-							ResultSet r=s.executeQuery("select * from t4 where 状态=1&&账号='"+ac.a+"'&&店名='"+l5.get(i)+"'");
+							ResultSet r=s.executeQuery("select * from t4 where 状态=1&&账号='"+ac.a+"'&&店名='"+l12.get(i)+"'");
 							if(r.next())
 							{
 								String c=r.getString(9);
-								s.execute("update t4 set 状态=0,拼单号="+c+" where 状态=1&&店名='"+l5.get(i)+"'");
+								s.execute("update t4 set 状态=0,拼单号="+c+" where 状态=1&&店名='"+l12.get(i)+"'");
 								startActivity(new Intent(ac9.this,ac12.class));
 							}
 							else
@@ -103,13 +106,17 @@ public class ac9 extends Activity implements View.OnClickListener
 	}
 	public void onClick(View v)
 	{try{
-		final String a=e.getText()+"";
-		l4=l2;l2=new ArrayList<>();l6=l5;l5=new ArrayList<>();int i;
-		for(i=0;i<l4.size();i++)if(l4.get(i).contains(a))
+		final String a=e2.getText()+"";
+		l11=l9;
+		l9=new ArrayList<>();
+		l13=l12;
+		l12=new ArrayList<>();int i;
+		for(i=0;i<l11.size();i++)if(l11.get(i).contains(a))
 		{
-			l2.add(l4.get(i));l5.add(l6.get(i));
+			l9.add(l11.get(i));
+			l12.add(l13.get(i));
 		}
-		a2.notifyDataSetChanged();
+		a3.notifyDataSetChanged();
 	}catch(Exception e){e.printStackTrace();}}
 	void f(String s){u=++i+"："+s;h.sendEmptyMessage(0);}
-}
+}*/

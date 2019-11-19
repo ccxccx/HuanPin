@@ -37,7 +37,7 @@ public class ac8 extends Activity
 			{
 				public void run()
 				{try{
-					ResultSet r=s.executeQuery("select * from t3 where 店名='"+ac7.a+"'");
+					ResultSet r=s.executeQuery("select * from t3 where 店名='"+ac3.a+"'");
 					for(;r.next();)
 					{
 						l.add("商品名："+r.getString(2)+"\n价格："+r.getString(3));

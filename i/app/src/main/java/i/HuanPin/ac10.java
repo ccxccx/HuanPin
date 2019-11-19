@@ -23,7 +23,7 @@ import java.util.List;
 public class ac10 extends Activity implements View.OnClickListener
 {
 	EditText e,e2;Button b,b2;
-	Statement s=ac.s;
+	Statement s=ac.s;static boolean d;
 	protected void onCreate(Bundle savedInstanceState)
 	{try{
 		super.onCreate(savedInstanceState);
@@ -61,7 +61,7 @@ public class ac10 extends Activity implements View.OnClickListener
 		e2.setText(c.get(Calendar.YEAR)+"/"+(c.get(Calendar.MONTH)+1)+"/"
 				+c.get(Calendar.DAY_OF_MONTH)+" "+String.format("%02d:%02d",c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE)));
 		l.addView(b=new Button(this));b.setText("添加拼单");b.setOnClickListener(this);
-		l.addView(b2=new Button(this));b2.setText("智能拼单（这个功能还没实现）");b2.setOnClickListener(this);
+		l.addView(b2=new Button(this));b2.setText("智能拼单（功能未实现）");b2.setOnClickListener(this);
 	}catch(Exception e){e.printStackTrace();}}
 	public void onClick(View v)
 	{
@@ -71,7 +71,7 @@ public class ac10 extends Activity implements View.OnClickListener
 			{
 				public void run()
 				{try{
-					ResultSet r=s.executeQuery("select 起送费 from t2 where 店名='"+ac7.a+"'");
+					ResultSet r=s.executeQuery("select 起送费 from t2 where 店名='"+ac3.a+"'");
 					r.next();String a=r.getString(1),b,c;
 					r.close();
 					r=s.executeQuery("select 联系方式 from t1 where 账号='"+ac.a+"'");
@@ -81,9 +81,10 @@ public class ac10 extends Activity implements View.OnClickListener
 					r.next();c=Integer.parseInt(r.getString(1))+1+"";
 					r.close();
 					s.execute("update t6 set 拼单号="+c);
-					s.execute("insert into t4 values('"+ac.a+"','"+ac7.a+"','"+e.getText()+"','"+e2.getText()
+					s.execute("insert into t4 values('"+ac.a+"','"+ac3.a+"','"+e.getText()+"','"+e2.getText()
 							+"','"+ac8.b+"','"+ac8.c+"','"+a+"','"+b+"','"+c+"','1')");
-					startActivity(new Intent(ac10.this,ac9.class));
+					d=true;
+					startActivity(new Intent(ac10.this,ac3.class));
 				}catch(Exception e){e.printStackTrace();}}
 			}).start();
 		}

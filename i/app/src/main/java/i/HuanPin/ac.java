@@ -47,9 +47,9 @@ public class ac extends Activity implements View.OnClickListener
         //*/
         /*
         setContentView(R.layout.l);
-        e=findViewById(R.id.e);e2=findViewById(R.id.e2);
-        b=findViewById(R.id.b);b2=findViewById(R.id.b2);
-        b.setOnClickListener(this);b2.setOnClickListener(this);
+        e2=findViewById(R.id.e2);e2=findViewById(R.id.e2);
+        b9=findViewById(R.id.b9);b2=findViewById(R.id.b2);
+        b9.setOnClickListener(this);b2.setOnClickListener(this);
         t=findViewById(R.id.t);
         //*/
         Thread t=new Thread(new Runnable()

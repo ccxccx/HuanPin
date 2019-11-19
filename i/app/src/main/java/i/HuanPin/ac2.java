@@ -43,10 +43,10 @@ public class ac2 extends Activity implements View.OnClickListener
         l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
         //*/
         /*
-        setContentView(R.layout.l2);
-        e=findViewById(R.id.e21);e2=findViewById(R.id.e22);e3=findViewById(R.id.e23);e4=findViewById(R.id.e24);
-        b=findViewById(R.id.b21);t=findViewById(R.id.t21);
-        b.setOnClickListener(this);
+        setContentView(R.layout.l9);
+        e2=findViewById(R.id.e21);e2=findViewById(R.id.e22);e3=findViewById(R.id.e23);e4=findViewById(R.id.e24);
+        b9=findViewById(R.id.b21);t=findViewById(R.id.t21);
+        b9.setOnClickListener(this);
         //*/
     }
     public void onClick(View v)

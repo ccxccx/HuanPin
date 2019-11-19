@@ -34,10 +34,10 @@ public class ac4 extends Activity implements View.OnClickListener
         l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
 		//*/
 		/*
-		setContentView(R.layout.l4);
-		e=findViewById(R.id.e41);e2=findViewById(R.id.e42);e3=findViewById(R.id.e43);
-		b=findViewById(R.id.b41);t=findViewById(R.id.t41);
-		b.setOnClickListener(this);
+		setContentView(R.layout.l11);
+		e2=findViewById(R.id.e41);e2=findViewById(R.id.e42);e3=findViewById(R.id.e43);
+		b9=findViewById(R.id.b41);t=findViewById(R.id.t41);
+		b9.setOnClickListener(this);
 		//*/
     }
     public void onClick(View v)
