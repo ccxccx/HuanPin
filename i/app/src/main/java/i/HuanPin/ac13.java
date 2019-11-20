@@ -19,7 +19,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ac11 extends Activity implements View.OnClickListener
+public class ac13 extends Activity implements View.OnClickListener
 {
 	EditText e;Button b;TextView t;int i;String u;
 	Statement s=ac.s;
@@ -33,8 +33,8 @@ public class ac11 extends Activity implements View.OnClickListener
 		super.onCreate(savedInstanceState);
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
 		l.setBackgroundColor(0xffffffcc);
-		l.addView(e=new EditText(this));e.setHint("请输入地址");
-		l.addView(b=new Button(this));b.setText("添加地址");b.setOnClickListener(this);
+		l.addView(e=new EditText(this));e.setHint("请输入反馈信息");
+		l.addView(b=new Button(this));b.setText("添加反馈信息");b.setOnClickListener(this);
 		l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
 		l2=new ListView(this);l.addView(l2);
 		l2.setAdapter(c=new ba());
@@ -47,10 +47,13 @@ public class ac11 extends Activity implements View.OnClickListener
 			{
 				public void run()
 				{try{
-					ResultSet r=s.executeQuery("select 地址 from t5 where 账号='"+ac.a+"'");
+					String t;
+					ResultSet r=s.executeQuery("select * from t7 where 账号='"+ac.a+"'");
 					for(;r.next();)
 					{
-						l.add(r.getString(1));
+						t=r.getString(3);
+						if(t.equals(""))t="暂未收到回复信息";t="回复信息：\n"+t.replaceAll("\\\\n","\n");
+						l.add("反馈信息：\n"+r.getString(2)+"\n"+t);
 					}
 					r.close();
 				}catch(Exception e){e.printStackTrace();}}
@@ -64,7 +67,7 @@ public class ac11 extends Activity implements View.OnClickListener
 		public View getView(final int i,View v,ViewGroup g)
 		{
 			TextView t=(TextView)v;
-			if(t==null)t=new TextView(ac11.this);
+			if(t==null)t=new TextView(ac13.this);
 			t.setText(l.get(i));
 			return t;
 		}
@@ -77,19 +80,17 @@ public class ac11 extends Activity implements View.OnClickListener
 			{try{
 				try{
 					String t=e.getText()+"";
-					if(t.equals(""))f("地址不能为空！");
+					if(t.equals(""))f("反馈信息不能为空！");
 					else
 					{
-						s.execute("insert into t5 values('"+ac.a+"','"+e.getText()+"')");
+						s.execute("insert into t7 values('"+ac.a+"','"+t+"','')");
+						f("反馈信息添加成功！");
 					}
-				}catch(Exception e)
-				{
-					f("已添加过该地址！");
-				}
+				}catch(Exception e){}
 			}catch(Exception e){e.printStackTrace();}}
 		});
 		t.start();t.join();
-		l.add(e.getText()+"");
+		l.add("反馈信息：\n"+e.getText()+"\n回复信息：\n暂未收到回复信息");
 		c.notifyDataSetChanged();
 		l2.setSelection(l.size());
 	}catch(Exception e){e.printStackTrace();}}

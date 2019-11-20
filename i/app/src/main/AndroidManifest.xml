@@ -21,5 +21,7 @@
         <activity android:name="ac10"/>
         <activity android:name="ac11"/>
         <activity android:name="ac12"/>
+        <activity android:name="ac13"/>
+        <activity android:name="ac14"/>
     </application>
 </manifest>

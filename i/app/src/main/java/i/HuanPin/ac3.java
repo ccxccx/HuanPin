@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.os.*;
 import androidx.viewpager.widget.ViewPager;
@@ -22,8 +23,8 @@ import java.util.List;
 
 public class ac3 extends Activity implements View.OnClickListener
 {
-	Button b,b2,b3,b4,b5,b6,b7,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20;Statement s=ac.s;LinearLayout l,l3;
-	LinearLayout.LayoutParams p;
+	Button b,b2,b3,b4,b5,b6,b7,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22;Statement s=ac.s;LinearLayout l,l2;RelativeLayout l3;
+	LinearLayout.LayoutParams p;RelativeLayout.LayoutParams p2,p3;
 	
 	static String a;EditText e;Button b8;
 	List<String> l4,l5,l6,l7;ba a2;
@@ -39,9 +40,11 @@ public class ac3 extends Activity implements View.OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		//*
-		l3=new LinearLayout(this);setContentView(l3);l3.setOrientation(LinearLayout.VERTICAL);
+		l3=new RelativeLayout(this);setContentView(l3);//l3.setOrientation(LinearLayout.VERTICAL);
 		l3.setBackgroundColor(0xffffffcc);
-		LinearLayout l2=new LinearLayout(this);l3.addView(l2);
+		p2=new RelativeLayout.LayoutParams(-1,-2);p2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+		p3=new RelativeLayout.LayoutParams(-1,-1);p3.addRule(RelativeLayout.ABOVE,1);
+		l2=new LinearLayout(this);l3.addView(l2,p2);int i=1;l2.setId(i);
 		p=new LinearLayout.LayoutParams(0,-2,1);
 		l2.addView(b7=new Button(this),p);b7.setText("我的");b7.setOnClickListener(this);
 		l2.addView(b3=new Button(this),p);b3.setText("搜索商店");b3.setOnClickListener(this);
@@ -65,8 +68,11 @@ public class ac3 extends Activity implements View.OnClickListener
 		else if(v==b3)
 		{
 			//startActivity(new Intent(ac3.this,ac7.class));
+			//b3.setBackgroundColor(0xffff0000);
 			l3.removeView(l);
-			l=new LinearLayout(this);l3.addView(l);l.setOrientation(LinearLayout.VERTICAL);
+			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
+			//l3.removeView(l2);l3.addView(l2,p2);
+			l2.bringToFront();
 			l.setBackgroundColor(0xffffffcc);
 			l.addView(e=new EditText(this));e.setHint("请输入您要搜索的关键词");
 			l.addView(b8=new Button(this));b8.setText("搜索");b8.setOnClickListener(this);
@@ -77,7 +83,9 @@ public class ac3 extends Activity implements View.OnClickListener
 		{
 			//startActivity(new Intent(ac3.this,ac9.class));
 			l3.removeView(l);
-			l=new LinearLayout(this);l3.addView(l);l.setOrientation(LinearLayout.VERTICAL);
+			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
+			//l3.removeView(l2);l3.addView(l2,p2);
+			l2.bringToFront();
 			l.setBackgroundColor(0xffffffcc);
 			l.addView(e2=new EditText(this));
 			e2.setHint("请输入您要搜索的关键词");
@@ -111,11 +119,15 @@ public class ac3 extends Activity implements View.OnClickListener
 		else if(v==b7)
 		{
 			l3.removeView(l);
-			l=new LinearLayout(this);l3.addView(l);l.setOrientation(LinearLayout.VERTICAL);
+			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
+			//l3.removeView(l2);l3.addView(l2,p2);
+			l2.bringToFront();
+			l.addView(b22=new Button(this));b22.setText("修改我的信息");b22.setOnClickListener(this);
 			l.addView(b=new Button(this));b.setText("添加商店");b.setOnClickListener(this);
 			l.addView(b2=new Button(this));b2.setText("我的商店");b2.setOnClickListener(this);
 			l.addView(b5=new Button(this));b5.setText("我的拼单");b5.setOnClickListener(this);
 			l.addView(b6=new Button(this));b6.setText("我的地址");b6.setOnClickListener(this);
+			l.addView(b21=new Button(this));b21.setText("反馈信息");b21.setOnClickListener(this);
 			l.addView(b10=new Button(this));b10.setText("开通超级会员（每月可领取红包）（功能未实现）");b10.setOnClickListener(this);
 			LinearLayout l2=new LinearLayout(this);l.addView(l2);
 			l2.addView(b11=new Button(this),p);b11.setText("我的红包（功能未实现）");b11.setOnClickListener(this);
@@ -150,13 +162,17 @@ public class ac3 extends Activity implements View.OnClickListener
 		else if(v==b20)
 		{
 			l3.removeView(l);
-			l=new LinearLayout(this);l3.addView(l);l.setOrientation(LinearLayout.VERTICAL);
+			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
+			//l3.removeView(l2);l3.addView(l2,p2);
+			l2.bringToFront();
 			l.addView(b15=new Button(this));b15.setText("客服（功能未实现）");b15.setOnClickListener(this);
 			l.addView(b16=new Button(this));b16.setText("推荐有奖（功能未实现）");b16.setOnClickListener(this);
 			l.addView(b17=new Button(this));b17.setText("商务合作（功能未实现）");b17.setOnClickListener(this);
 			l.addView(b18=new Button(this));b18.setText("办卡有礼（功能未实现）");b18.setOnClickListener(this);
 			l.addView(b19=new Button(this));b19.setText("3小时公益（功能未实现）");b19.setOnClickListener(this);
 		}
+		else if(v==b21)startActivity(new Intent(this,ac13.class));
+		else if(v==b22)startActivity(new Intent(this,ac14.class));
 	}catch(Exception e){e.printStackTrace();}}
 	class ba extends BaseAdapter
 	{
