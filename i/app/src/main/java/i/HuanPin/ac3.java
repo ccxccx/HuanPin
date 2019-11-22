@@ -23,19 +23,22 @@ import java.util.List;
 
 public class ac3 extends Activity implements View.OnClickListener
 {
-	Button b,b2,b3,b4,b5,b6,b7,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22;Statement s=ac.s;LinearLayout l,l2;RelativeLayout l3;
+	Button b,b2,b3,b4,b5,b6,b7,b10,b11,b12,b13,b14,b15,b16,b17,b18,b19,b20,b21,b22,b23;
+	Statement s=ac.s;LinearLayout l,l2;RelativeLayout l3;
 	LinearLayout.LayoutParams p;RelativeLayout.LayoutParams p2,p3;
 	
 	static String a;EditText e;Button b8;
 	List<String> l4,l5,l6,l7;ba a2;
 	
 	EditText e2;Button b9;ba2 a3;
-	List<String>l9,l11,l12,l13;
+	List<String>l9,l11,l12,l13,l14,l15;
 	TextView t;int i;String u;
 	Handler h=new Handler()
 	{
 		public void handleMessage(Message m){t.setText(u);}
 	};
+	
+	static String f,g;
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -93,7 +96,7 @@ public class ac3 extends Activity implements View.OnClickListener
 			b9.setText("搜索");
 			b9.setOnClickListener(this);
 			l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
-			l9=new ArrayList<>();l12=new ArrayList<>();
+			l9=new ArrayList<>();l12=new ArrayList<>();l14=new ArrayList<>();
 			Thread t=new Thread(new Runnable()
 			{
 				public void run()
@@ -101,10 +104,11 @@ public class ac3 extends Activity implements View.OnClickListener
 					ResultSet r=s.executeQuery("select * from t4 where 状态=1&&账号!='"+ac.a+"'");
 					for(;r.next();)
 					{
-						l9.add("店名："+r.getString(2)+"\n地址："+r.getString(3)+"\n最晚时间："+r.getString(4)
-								+"\n商品："+r.getString(5)+"\n价格："+r.getString(6)+"\n起送费："+r.getString(7)
-								+"\n联系方式："+r.getString(8));
+						l9.add("账号："+r.getString(1)+"\n店名："+r.getString(2)+"\n地址："+r.getString(3)
+								+"\n最晚时间："+r.getString(4)+"\n商品："+r.getString(5)+"\n价格："+r.getString(6)
+								+"\n起送费："+r.getString(7)+"\n联系方式："+r.getString(8));
 						l12.add(r.getString(2));
+						l14.add(r.getString(1));
 					}
 					r.close();
 				}catch(Exception e){e.printStackTrace();}}
@@ -148,14 +152,15 @@ public class ac3 extends Activity implements View.OnClickListener
 		else if(v==b9)
 		{
 			final String a=e2.getText()+"";
-			l11=l9;
-			l9=new ArrayList<>();
-			l13=l12;
-			l12=new ArrayList<>();int i;
+			l11=l9;l9=new ArrayList<>();
+			l13=l12;l12=new ArrayList<>();
+			l15=l14;l14=new ArrayList<>();
+			int i;
 			for(i=0;i<l11.size();i++)if(l11.get(i).contains(a))
 			{
 				l9.add(l11.get(i));
 				l12.add(l13.get(i));
+				l14.add(l12.get(i));
 			}
 			a3.notifyDataSetChanged();
 		}
@@ -165,6 +170,7 @@ public class ac3 extends Activity implements View.OnClickListener
 			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
 			//l3.removeView(l2);l3.addView(l2,p2);
 			l2.bringToFront();
+			l.addView(b23=new Button(this));b23.setText("在地图上查看路线");b23.setOnClickListener(this);
 			l.addView(b15=new Button(this));b15.setText("客服（功能未实现）");b15.setOnClickListener(this);
 			l.addView(b16=new Button(this));b16.setText("推荐有奖（功能未实现）");b16.setOnClickListener(this);
 			l.addView(b17=new Button(this));b17.setText("商务合作（功能未实现）");b17.setOnClickListener(this);
@@ -173,6 +179,7 @@ public class ac3 extends Activity implements View.OnClickListener
 		}
 		else if(v==b21)startActivity(new Intent(this,ac13.class));
 		else if(v==b22)startActivity(new Intent(this,ac14.class));
+		else if(v==b23)startActivity(new Intent(this,ac15.class));
 	}catch(Exception e){e.printStackTrace();}}
 	class ba extends BaseAdapter
 	{
@@ -218,16 +225,17 @@ public class ac3 extends Activity implements View.OnClickListener
 		public int getCount(){return l9.size();}
 		public Object getItem(int position){return null;}
 		public long getItemId(int position){return 0;}
-		class i{TextView t;Button b;i(TextView i,Button j){t=i;b=j;}}
-		public View getView(final int i,View v,ViewGroup g)
+		class i{TextView t;Button b,b2;i(TextView i,Button j,Button k){t=i;b=j;b2=k;}}
+		public View getView(final int i,View v,ViewGroup vg)
 		{
 			LinearLayout l3=(LinearLayout)v;i a;
 			if(l3==null)
 			{
 				l3=new LinearLayout(ac3.this);l3.setOrientation(LinearLayout.VERTICAL);
-				l3.setTag(a=new i(new TextView(ac3.this),new Button(ac3.this)));
+				l3.setTag(a=new i(new TextView(ac3.this),new Button(ac3.this),new Button(ac3.this)));
 				l3.addView(a.t);
 				l3.addView(a.b);a.b.setText("和他拼单");
+				l3.addView(a.b2);a.b2.setText("在地图上查看路线");
 			}
 			else a=(i)l3.getTag();
 			a.t.setText(l9.get(i));
@@ -243,12 +251,39 @@ public class ac3 extends Activity implements View.OnClickListener
 							if(r.next())
 							{
 								String c=r.getString(9);
-								s.execute("update t4 set 状态=0,拼单号="+c+" where 状态=1&&店名='"+l12.get(i)+"'");
+								s.execute("update t4 set 状态=0,拼单号="+c+" where 状态=1&&店名='"+l12.get(i)
+										+"'&&(账号='"+ac.a+"'||账号='"+l14.get(i)+"')");
 								startActivity(new Intent(ac3.this,ac12.class));
 							}
 							else
 							{
 								f("您没有这个店的拼单信息！只有相同的店才能拼单！");
+							}
+							r.close();
+						}catch(Exception e){e.printStackTrace();}}
+					}).start();
+				}
+			});
+			a.b2.setOnClickListener(new View.OnClickListener()
+			{
+				public void onClick(View v)
+				{
+					new Thread(new Runnable()
+					{
+						public void run()
+						{try{
+							ResultSet r=s.executeQuery("select 地址2 from t4 where 状态=1&&账号='"+ac.a+"'&&店名='"+l12.get(i)+"'");
+							if(r.next())
+							{
+								f=r.getString(1);r.close();
+								r=s.executeQuery("select 地址2 from t4 where 状态=1&&店名='"+l12.get(i)+"'&&账号='"+l14.get(i)+"'");
+								//System.out.println("select 地址2 from t4 where 状态=1&&店名='"+l12.get(i)+"'&&账号='"+l14.get(i)+"'");
+								r.next();g=r.getString(1);
+								startActivity(new Intent(ac3.this,ac16.class));
+							}
+							else
+							{
+								f("您没有这个店的拼单信息！只有发布过相同的店的拼单，才能在地图上查看路线！");
 							}
 							r.close();
 						}catch(Exception e){e.printStackTrace();}}

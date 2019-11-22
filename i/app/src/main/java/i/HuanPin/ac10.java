@@ -82,7 +82,7 @@ public class ac10 extends Activity implements View.OnClickListener
 					r.close();
 					s.execute("update t6 set 拼单号="+c);
 					s.execute("insert into t4 values('"+ac.a+"','"+ac3.a+"','"+e.getText()+"','"+e2.getText()
-							+"','"+ac8.b+"','"+ac8.c+"','"+a+"','"+b+"','"+c+"','1')");
+							+"','"+ac8.b+"','"+ac8.c+"','"+a+"','"+b+"','"+c+"','1','福州大学')");
 					d=true;
 					startActivity(new Intent(ac10.this,ac3.class));
 				}catch(Exception e){e.printStackTrace();}}
