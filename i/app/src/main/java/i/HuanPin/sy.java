@@ -25,11 +25,11 @@ public class sy extends Activity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		//LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-        //l.addView(b9=new Button(this));
-        //b9.setText("登录<br>1\n2&#10;3");
+		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
+        l.addView(b=new bu(this,R.drawable.tianjia));
+        b.setText("登录<br>1\n2&#10;3");
 		//l.addView(t=new TextView(this));
-		WebView w=new WebView(this);
+		/*WebView w=new WebView(this);
 		setContentView(w);
 		//w.loadUrl("http://www.baidu.com");
 		w.loadUrl("http://172.81.211.138:8080/0?i=福州大学&j=福州大学玫瑰餐厅");
@@ -39,7 +39,7 @@ public class sy extends Activity
 		//使网页能运行JavaScript
 		s.setJavaScriptEnabled(true);
 		//使内容适应屏幕大小
-		s.setUseWideViewPort(true);s.setLoadWithOverviewMode(true);
+		s.setUseWideViewPort(true);s.setLoadWithOverviewMode(true);*/
 	}
 	
 }

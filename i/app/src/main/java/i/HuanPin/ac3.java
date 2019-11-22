@@ -49,12 +49,12 @@ public class ac3 extends Activity implements View.OnClickListener
 		p3=new RelativeLayout.LayoutParams(-1,-1);p3.addRule(RelativeLayout.ABOVE,1);
 		l2=new LinearLayout(this);l3.addView(l2,p2);int i=1;l2.setId(i);
 		p=new LinearLayout.LayoutParams(0,-2,1);
-		l2.addView(b7=new Button(this),p);b7.setText("我的");b7.setOnClickListener(this);
 		l2.addView(b3=new Button(this),p);b3.setText("搜索商店");b3.setOnClickListener(this);
 		l2.addView(b4=new Button(this),p);b4.setText("搜索拼单");b4.setOnClickListener(this);
+		l2.addView(b7=new Button(this),p);b7.setText("我的");b7.setOnClickListener(this);
 		l2.addView(b20=new Button(this),p);b20.setText("其他功能");b20.setOnClickListener(this);
 		if(ac10.d){ac10.d=false;b4.callOnClick();}
-		else b7.callOnClick();
+		else b3.callOnClick();
 		//*/
 		/*
 		setContentView(R.layout.l3);
@@ -78,7 +78,7 @@ public class ac3 extends Activity implements View.OnClickListener
 			l2.bringToFront();
 			l.setBackgroundColor(0xffffffcc);
 			l.addView(e=new EditText(this));e.setHint("请输入您要搜索的关键词");
-			l.addView(b8=new Button(this));b8.setText("搜索");b8.setOnClickListener(this);
+			l.addView(b8=new bu(this,R.drawable.sou));b8.setText("搜索");b8.setOnClickListener(this);
 			ListView l2=new ListView(this);l.addView(l2);
 			l2.setAdapter(a2=new ba());
 		}
@@ -92,7 +92,7 @@ public class ac3 extends Activity implements View.OnClickListener
 			l.setBackgroundColor(0xffffffcc);
 			l.addView(e2=new EditText(this));
 			e2.setHint("请输入您要搜索的关键词");
-			l.addView(b9=new Button(this));
+			l.addView(b9=new bu(this,R.drawable.sou));
 			b9.setText("搜索");
 			b9.setOnClickListener(this);
 			l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
@@ -127,11 +127,11 @@ public class ac3 extends Activity implements View.OnClickListener
 			//l3.removeView(l2);l3.addView(l2,p2);
 			l2.bringToFront();
 			l.addView(b22=new Button(this));b22.setText("修改我的信息");b22.setOnClickListener(this);
-			l.addView(b=new Button(this));b.setText("添加商店");b.setOnClickListener(this);
-			l.addView(b2=new Button(this));b2.setText("我的商店");b2.setOnClickListener(this);
-			l.addView(b5=new Button(this));b5.setText("我的拼单");b5.setOnClickListener(this);
-			l.addView(b6=new Button(this));b6.setText("我的地址");b6.setOnClickListener(this);
-			l.addView(b21=new Button(this));b21.setText("反馈信息");b21.setOnClickListener(this);
+			l.addView(b=new bu(this,R.drawable.tianjia));b.setText("添加商店");b.setOnClickListener(this);
+			l.addView(b2=new bu(this,R.drawable.sandian));b2.setText("我的商店");b2.setOnClickListener(this);
+			l.addView(b5=new bu(this,R.drawable.pindan));b5.setText("我的拼单");b5.setOnClickListener(this);
+			l.addView(b6=new bu(this,R.drawable.dizhi));b6.setText("我的地址");b6.setOnClickListener(this);
+			l.addView(b21=new bu(this,R.drawable.fankui));b21.setText("反馈信息");b21.setOnClickListener(this);
 			l.addView(b10=new Button(this));b10.setText("开通超级会员（每月可领取红包）（功能未实现）");b10.setOnClickListener(this);
 			LinearLayout l2=new LinearLayout(this);l.addView(l2);
 			l2.addView(b11=new Button(this),p);b11.setText("我的红包（功能未实现）");b11.setOnClickListener(this);
@@ -171,9 +171,9 @@ public class ac3 extends Activity implements View.OnClickListener
 			//l3.removeView(l2);l3.addView(l2,p2);
 			l2.bringToFront();
 			l.addView(b23=new Button(this));b23.setText("在地图上查看路线");b23.setOnClickListener(this);
-			l.addView(b15=new Button(this));b15.setText("客服（功能未实现）");b15.setOnClickListener(this);
-			l.addView(b16=new Button(this));b16.setText("推荐有奖（功能未实现）");b16.setOnClickListener(this);
-			l.addView(b17=new Button(this));b17.setText("商务合作（功能未实现）");b17.setOnClickListener(this);
+			l.addView(b15=new bu(this,R.drawable.kefu));b15.setText("客服（功能未实现）");b15.setOnClickListener(this);
+			l.addView(b16=new bu(this,R.drawable.zan));b16.setText("推荐有奖（功能未实现）");b16.setOnClickListener(this);
+			l.addView(b17=new bu(this,R.drawable.hezuo));b17.setText("商务合作（功能未实现）");b17.setOnClickListener(this);
 			l.addView(b18=new Button(this));b18.setText("办卡有礼（功能未实现）");b18.setOnClickListener(this);
 			l.addView(b19=new Button(this));b19.setText("3小时公益（功能未实现）");b19.setOnClickListener(this);
 		}

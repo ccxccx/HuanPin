@@ -1,7 +1,13 @@
 package i.HuanPin;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -88,4 +94,17 @@ public class ac extends Activity implements View.OnClickListener
         }).start();
     }
     void f(String s){u=++i+"："+s;h.sendEmptyMessage(0);}
+}
+class bu extends Button
+{
+    Context c;Bitmap b;
+    bu(Context a,int i)
+    {
+        super(a);c=a;b=BitmapFactory.decodeResource(c.getResources(),i);
+    }
+    protected void onDraw(Canvas c)
+    {
+        super.onDraw(c);int h=getHeight(),i=h/6,j=h*7/8;
+        c.drawBitmap(b,null,new Rect(i,i,j,j),null);
+    }
 }
