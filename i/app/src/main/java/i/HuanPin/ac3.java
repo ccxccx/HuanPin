@@ -1,8 +1,10 @@
 package i.HuanPin;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.os.*;
 import androidx.viewpager.widget.ViewPager;
 
+import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -38,7 +41,8 @@ public class ac3 extends Activity implements View.OnClickListener
 		public void handleMessage(Message m){t.setText(u);}
 	};
 	
-	static String f,g;
+	static String f,g;boolean j;
+	InputStream in;
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -70,6 +74,7 @@ public class ac3 extends Activity implements View.OnClickListener
 		else if(v==b2)startActivity(new Intent(ac3.this,ac5.class));
 		else if(v==b3)
 		{
+			j=false;
 			//startActivity(new Intent(ac3.this,ac7.class));
 			//b3.setBackgroundColor(0xffff0000);
 			l3.removeView(l);
@@ -84,6 +89,7 @@ public class ac3 extends Activity implements View.OnClickListener
 		}
 		else if(v==b4)
 		{
+			j=true;
 			//startActivity(new Intent(ac3.this,ac9.class));
 			l3.removeView(l);
 			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
@@ -122,22 +128,39 @@ public class ac3 extends Activity implements View.OnClickListener
 		else if(v==b6)startActivity(new Intent(ac3.this,ac11.class));
 		else if(v==b7)
 		{
+			j=true;
 			l3.removeView(l);
 			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
 			//l3.removeView(l2);l3.addView(l2,p2);
 			l2.bringToFront();
+			LinearLayout l4=new LinearLayout(this);l.addView(l4);l4.setBackgroundColor(0xffede387);
+			ImageView i=new ImageView(this);
+			l4.addView(i,new LinearLayout.LayoutParams(0,ac.w/5,1));
+			Thread t=new Thread(new Runnable()
+			{
+				public void run()
+				{try{
+					ResultSet r=s.executeQuery("select 头像 from t1 where 账号='"+ac.a+"'");
+					r.next();in=r.getBlob(1).getBinaryStream();r.close();
+				}catch(Exception e){e.printStackTrace();}}
+			});
+			t.start();t.join();
+			i.setImageBitmap(BitmapFactory.decodeStream(in));
+			TextView t2=new TextView(this);
+			l4.addView(t2,new LinearLayout.LayoutParams(0,ac.w/5,4));
+			t2.setText("账号："+ac.a);t2.setGravity(Gravity.CENTER);
 			l.addView(b22=new Button(this));b22.setText("修改我的信息");b22.setOnClickListener(this);
 			l.addView(b=new bu(this,R.drawable.tianjia));b.setText("添加商店");b.setOnClickListener(this);
 			l.addView(b2=new bu(this,R.drawable.sandian));b2.setText("我的商店");b2.setOnClickListener(this);
 			l.addView(b5=new bu(this,R.drawable.pindan));b5.setText("我的拼单");b5.setOnClickListener(this);
 			l.addView(b6=new bu(this,R.drawable.dizhi));b6.setText("我的地址");b6.setOnClickListener(this);
 			l.addView(b21=new bu(this,R.drawable.fankui));b21.setText("反馈信息");b21.setOnClickListener(this);
-			l.addView(b10=new Button(this));b10.setText("开通超级会员（每月可领取红包）（功能未实现）");b10.setOnClickListener(this);
+			/*l.addView(b10=new Button(this));b10.setText("开通超级会员（每月可领取红包）（功能未实现）");b10.setOnClickListener(this);
 			LinearLayout l2=new LinearLayout(this);l.addView(l2);
 			l2.addView(b11=new Button(this),p);b11.setText("我的红包（功能未实现）");b11.setOnClickListener(this);
 			l2.addView(b12=new Button(this),p);b12.setText("我的津贴（功能未实现）");b12.setOnClickListener(this);
 			l2.addView(b13=new Button(this),p);b13.setText("我的钱包（功能未实现）");b13.setOnClickListener(this);
-			l.addView(b14=new Button(this));b14.setText("我的收藏（功能未实现）");b14.setOnClickListener(this);
+			l.addView(b14=new Button(this));b14.setText("我的收藏（功能未实现）");b14.setOnClickListener(this);*/
 		}
 		else if(v==b8)
 		{
@@ -166,6 +189,7 @@ public class ac3 extends Activity implements View.OnClickListener
 		}
 		else if(v==b20)
 		{
+			j=true;
 			l3.removeView(l);
 			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
 			//l3.removeView(l2);l3.addView(l2,p2);
@@ -181,6 +205,21 @@ public class ac3 extends Activity implements View.OnClickListener
 		else if(v==b22)startActivity(new Intent(this,ac14.class));
 		else if(v==b23)startActivity(new Intent(this,ac15.class));
 	}catch(Exception e){e.printStackTrace();}}
+	public boolean onKeyDown(int i,KeyEvent e)
+	{
+		if(i==4){if(j)b3.callOnClick();else finish();}
+		//若return true;则会把除了电源键和home键以外
+		//的其他所有按键(如音量+-和返回键等)的原来
+		//的作用都屏蔽了，小心!!!!!
+		//若return false;则只会把返回键屏蔽了
+		//，这说明返回键的作用写在了super.onKeyDown(i,e);里
+		//记原理!!!!!!!!!!!!!小心!!!!!!!!!!
+		//若return super.onKeyDown(i,e);
+		//则所有按键都会有原来的作用
+		//对比记忆!!!!!!!!!小心!!!!!!!!!!!
+		//所以这里要用return false;对比!!!!!!记原理!!!!!!!小心!!!!!!!
+		return false;
+	}
 	class ba extends BaseAdapter
 	{
 		ba()

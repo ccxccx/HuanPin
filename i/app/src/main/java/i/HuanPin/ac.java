@@ -52,10 +52,10 @@ public class ac extends Activity implements View.OnClickListener
         l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
         //*/
         /*
-        setContentView(R.layout.l);
-        e2=findViewById(R.id.e2);e2=findViewById(R.id.e2);
-        b9=findViewById(R.id.b9);b2=findViewById(R.id.b2);
-        b9.setOnClickListener(this);b2.setOnClickListener(this);
+        setContentView(R.layout.l1denglu);
+        e=findViewById(R.id.e);e2=findViewById(R.id.e2);
+        b=findViewById(R.id.b);b2=findViewById(R.id.b2);
+        b.setOnClickListener(this);b2.setOnClickListener(this);
         t=findViewById(R.id.t);
         //*/
         Thread t=new Thread(new Runnable()

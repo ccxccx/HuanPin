@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00EDEDED"
+        android:paddingTop="?attr/actionBarSize">
+
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="#DE8100"
+            android:text="添加商店"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText7" />
+
+        <EditText
+            android:id="@+id/editText7"
+            android:layout_width="393dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="请输入商店的配送费"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText6" />
+
+        <EditText
+            android:id="@+id/editText6"
+            android:layout_width="393dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="请输入商店的起送费"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
+        <EditText
+            android:id="@+id/editText5"
+            android:layout_width="393dp"
+            android:layout_height="41dp"
+            android:ems="10"
+            android:hint="请输入店名"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="44dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

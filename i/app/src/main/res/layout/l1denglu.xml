@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#EDE387"
+        android:paddingTop="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="247dp"
+            android:layout_height="191dp"
+            app:srcCompat="@drawable/ic_logo_foreground"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="28dp" />
+
+        <EditText
+            android:id="@+id/e"
+            android:layout_width="247dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:hint="请输入账号"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="264dp" />
+
+        <Button
+            android:id="@+id/b"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:background="#DE8100"
+            android:lineSpacingExtra="14sp"
+            android:text="登录"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="385dp" />
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:background="#DE8100"
+            android:text="注册"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="116dp"
+            tools:layout_editor_absoluteY="441dp" />
+
+        <EditText
+            android:id="@+id/e2"
+            android:layout_width="247dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="328dp" />
+
+        <TextView
+            android:id="@+id/t"
+            android:layout_width="247dp"
+            android:layout_height="45dp"
+            tools:layout_editor_absoluteX="73dp"
+            tools:layout_editor_absoluteY="517dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
