@@ -30,13 +30,15 @@ public class ac12 extends Activity
 	void f()
 	{
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-		l.setBackgroundColor(0xffffffcc);
 		TextView t=new TextView(this);l.addView(t);t.setText("正在拼单的：");
+		t.setBackgroundColor(0xffde8100);t.setGravity(Gravity.CENTER);
 		LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(-1,0,1);
 		ListView l2=new ListView(this);l.addView(l2,p);l2.setAdapter(new ba());
 		TextView t2=new TextView(this);l.addView(t2);t2.setText("未拼单的：");
+		t2.setBackgroundColor(0xffde8100);t2.setGravity(Gravity.CENTER);
 		ListView l3=new ListView(this);l.addView(l3,p);l3.setAdapter(new ba2());
 		TextView t3=new TextView(this);l.addView(t3);t3.setText("拼单结束的：");
+		t3.setBackgroundColor(0xffde8100);t3.setGravity(Gravity.CENTER);
 		ListView l4=new ListView(this);l.addView(l4,p);l4.setAdapter(new ba3());
 	}
 	class ba extends BaseAdapter
@@ -82,9 +84,8 @@ public class ac12 extends Activity
 			if(l3==null)
 			{
 				l3=new LinearLayout(ac12.this);l3.setOrientation(LinearLayout.VERTICAL);
-				l3.setTag(a=new i(new TextView(ac12.this),new Button(ac12.this)));
-				l3.addView(a.t);
-				l3.addView(a.b);a.b.setText("结束拼单");
+				l3.setTag(a=new i(new TextView(ac12.this),new bu(ac12.this,"结束拼单")));
+				l3.addView(a.t);l3.addView(a.b);
 			}
 			else a=(i)l3.getTag();
 			a.t.setText(l.get(i));
@@ -138,9 +139,8 @@ public class ac12 extends Activity
 			if(l3==null)
 			{
 				l3=new LinearLayout(ac12.this);l3.setOrientation(LinearLayout.VERTICAL);
-				l3.setTag(a=new i(new TextView(ac12.this),new Button(ac12.this)));
-				l3.addView(a.t);
-				l3.addView(a.b);a.b.setText("撤销拼单");
+				l3.setTag(a=new i(new TextView(ac12.this),new bu(ac12.this,"撤销拼单")));
+				l3.addView(a.t);l3.addView(a.b);
 			}
 			else a=(i)l3.getTag();
 			a.t.setText(l.get(i));

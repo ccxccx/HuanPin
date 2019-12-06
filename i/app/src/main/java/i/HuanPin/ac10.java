@@ -28,7 +28,6 @@ public class ac10 extends Activity implements View.OnClickListener
 	{try{
 		super.onCreate(savedInstanceState);
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-		l.setBackgroundColor(0xffffffcc);
 		l.addView(e=new EditText(this));e.setHint("请输入或选择下面的地址");
 		final Spinner s2=new Spinner(this);l.addView(s2);
 		final List<String>l3=new ArrayList<>();l3.add("");
@@ -56,12 +55,13 @@ public class ac10 extends Activity implements View.OnClickListener
 			public void onNothingSelected(AdapterView<?> parent){}
 		});
 		TextView t2=new TextView(this);l.addView(t2);t2.setText("请修改下面的时间，作为本次拼单所能等待的最晚时间");
+		t2.setBackgroundColor(0xffde8100);
 		l.addView(e2=new EditText(this));
 		Calendar c=Calendar.getInstance();
 		e2.setText(c.get(Calendar.YEAR)+"/"+(c.get(Calendar.MONTH)+1)+"/"
 				+c.get(Calendar.DAY_OF_MONTH)+" "+String.format("%02d:%02d",c.get(Calendar.HOUR_OF_DAY),c.get(Calendar.MINUTE)));
-		l.addView(b=new Button(this));b.setText("添加拼单");b.setOnClickListener(this);
-		l.addView(b2=new Button(this));b2.setText("智能拼单（功能未实现）");b2.setOnClickListener(this);
+		l.addView(b=new bu(this,"添加拼单"));b.setOnClickListener(this);
+		//l.addView(b2=new Button(this));b2.setText("智能拼单（功能未实现）");b2.setOnClickListener(this);
 	}catch(Exception e){e.printStackTrace();}}
 	public void onClick(View v)
 	{

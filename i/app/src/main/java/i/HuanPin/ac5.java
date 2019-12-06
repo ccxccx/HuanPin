@@ -20,7 +20,6 @@ public class ac5 extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		ListView l=new ListView(this);setContentView(l);
-		l.setBackgroundColor(0xffffffcc);
 		l.setAdapter(new ba());
 	}
 	class ba extends BaseAdapter
@@ -50,7 +49,7 @@ public class ac5 extends Activity
 		public View getView(final int i,View v,ViewGroup g)
 		{
 			Button b=(Button)v;
-			if(b==null)b=new Button(ac5.this);
+			if(b==null)b=new bu(ac5.this,l.get(i));
 			b.setText(l.get(i));
 			b.setOnClickListener(new View.OnClickListener()
 			{

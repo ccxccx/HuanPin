@@ -16,46 +16,54 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="393dp"
-            android:layout_height="75dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
             android:background="#DE8100"
             android:text="        请将地址设置为容易识别的地址，如：福州大学、福州大学32号楼、福州大学教学楼、福州大学东3楼、福州大学图书馆。"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="6dp" />
+            app:layout_constraintBottom_toTopOf="@+id/editText8"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editText8"
-            android:layout_width="393dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="请输入起始地址"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+            app:layout_constraintBottom_toTopOf="@+id/editText9"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editText9"
-            android:layout_width="393dp"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="请输入终点地址"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText8" />
+            app:layout_constraintBottom_toTopOf="@+id/button12"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button12"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:background="#DE8100"
             android:text="查看地图"
+            app:layout_constraintBottom_toTopOf="@+id/guideline14"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText9" />
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="385dp"
+            app:layout_constraintGuide_percent="0.4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

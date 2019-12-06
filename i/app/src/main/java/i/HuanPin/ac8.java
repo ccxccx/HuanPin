@@ -27,7 +27,6 @@ public class ac8 extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(l2=new ListView(this));l2.setAdapter(a=new ba());
-		l2.setBackgroundColor(0xffffffcc);
 	}
 	class ba extends BaseAdapter
 	{
@@ -59,9 +58,8 @@ public class ac8 extends Activity
 			if(l3==null)
 			{
 				l3=new LinearLayout(ac8.this);l3.setOrientation(LinearLayout.VERTICAL);
-				l3.setTag(a=new i(new TextView(ac8.this),new Button(ac8.this)));
-				l3.addView(a.t);
-				l3.addView(a.b);a.b.setText("添加拼单");
+				l3.setTag(a=new i(new TextView(ac8.this),new bu(ac8.this,"添加拼单")));
+				l3.addView(a.t);l3.addView(a.b);a.t.setTextSize(21.6f);
 			}
 			else a=(i)l3.getTag();
 			a.t.setText(l.get(i));

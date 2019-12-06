@@ -4,7 +4,9 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -38,35 +40,30 @@ public class ac2 extends Activity implements View.OnClickListener
     {
         public void handleMessage(Message m){t.setText(u);}
     };
-    ImageView i2;InputStream in;
+    ImageView i2;Bitmap d;
     protected void onCreate(Bundle savedInstanceState)
     {try{
         super.onCreate(savedInstanceState);
         //*
         LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-        l.setBackgroundColor(0xffffffcc);
-        l.addView(e=new EditText(this));e.setHint("请输入账号");
-        l.addView(e2=new EditText(this));e2.setHint("请输入密码");
-		l.addView(e3=new EditText(this));e3.setHint("请确认密码");
+        l.setBackgroundColor(0xffede387);
+        LinearLayout.LayoutParams p2=new LinearLayout.LayoutParams(-1,-2),p4=new LinearLayout.LayoutParams(-1,-2);
+        int i=ac.w/6;p2.setMargins(i,0,i,0);p4.setMargins(i,ac.w/16,i,0);
+        l.addView(e=new EditText(this),p4);e.setHint("请输入账号");
+        l.addView(e2=new EditText(this),p2);e2.setHint("请输入密码");
+		l.addView(e3=new EditText(this),p2);e3.setHint("请确认密码");
         e2.setTransformationMethod(p);e3.setTransformationMethod(p);
-		l.addView(e4=new EditText(this));e4.setHint("请输入联系方式");
-        l.addView(b2=new Button(this));b2.setText("选择头像");b2.setOnClickListener(this);
+		l.addView(e4=new EditText(this),p2);e4.setHint("请输入联系方式");
+        LinearLayout.LayoutParams p3=new LinearLayout.LayoutParams(-1,-2);
+        i=ac.w/4;p3.setMargins(i,0,i,0);
+        l.addView(b2=new bu(this,"选择头像"),p3);b2.setOnClickListener(this);
         l.addView(i2=new ImageView(this),-1,ac.w/2);
-		l.addView(b=new Button(this));b.setText("注册");b.setOnClickListener(this);
+		l.addView(b=new bu(this,"注册"),p3);b.setOnClickListener(this);
         l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
-        Thread t=new Thread(new Runnable()
-        {
-            public void run()
-            {try{
-                ResultSet r=s.executeQuery("select 头像 from t1 where 账号=''");
-                r.next();in=r.getBlob(1).getBinaryStream();r.close();
-            }catch(Exception e){e.printStackTrace();}}
-        });
-        t.start();t.join();
-        i2.setImageBitmap(BitmapFactory.decodeStream(in));in.reset();
+        i2.setImageBitmap(d=BitmapFactory.decodeResource(getResources(),R.drawable.i2));
         //*/
         /*
-        setContentView(R.layout.l9);
+        setContentView(R.layout.l2zhuce);
         e2=findViewById(R.id.e21);e2=findViewById(R.id.e22);e3=findViewById(R.id.e23);e4=findViewById(R.id.e24);
         b9=findViewById(R.id.b21);t=findViewById(R.id.t21);
         b9.setOnClickListener(this);
@@ -88,13 +85,14 @@ public class ac2 extends Activity implements View.OnClickListener
                 String a=e2.getText()+"", b=e3.getText()+"";
                 if(a.equals(b))
                 {try{
-                    PreparedStatement s2=ac.c.prepareStatement("insert into t1 values('"+e.getText()+"','"+a+"','"+e4.getText()+"',?)");
-                    s2.setBlob(1,in);s2.execute();s2.close();
+                    s.execute("insert into t1 values('"+e.getText()+"','"
+                            +a+"','"+e4.getText()+"','"+ac.b2s(d)+"')");
                     startActivity(new Intent(ac2.this,ac.class));
                 }catch(Exception e)
                 {
                     e.printStackTrace();
                     f("该账号已被注册！");
+                    //f(e+"");
                 }}
                 else f("两次输入的密码必须相同！");
             }catch(Exception e){e.printStackTrace();}}
@@ -105,9 +103,9 @@ public class ac2 extends Activity implements View.OnClickListener
         Cursor c=getContentResolver().query(i.getData(),null,null,null,null);
         c.moveToNext();
         String a=c.getString(c.getColumnIndex(MediaStore.Images.Media.DATA));
-        i2.setImageBitmap(BitmapFactory.decodeStream(in=new FileInputStream(a)));
-        //不能用in.reset();，因为FileInputStream不支持reset();，小心!!!!!!!!!
-        in=new FileInputStream(a);c.close();
+        Bitmap e=BitmapFactory.decodeFile(a);
+        i2.setImageBitmap(d=ThumbnailUtils.extractThumbnail(e,e.getWidth()*200/e.getHeight(),200));
+        c.close();
     }catch(Exception e){e.printStackTrace();}}
     void f(String s){u=++i+"："+s;h.sendEmptyMessage(0);}
 }

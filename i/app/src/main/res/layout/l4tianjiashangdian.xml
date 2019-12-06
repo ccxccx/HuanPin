@@ -16,44 +16,52 @@
             android:id="@+id/button11"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:background="#DE8100"
             android:text="添加商店"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/guideline17"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText7" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editText7"
-            android:layout_width="393dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="请输入商店的配送费"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText6" />
+            app:layout_constraintBottom_toTopOf="@+id/button11"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editText6"
-            android:layout_width="393dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="请输入商店的起送费"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText5" />
+            app:layout_constraintBottom_toTopOf="@+id/editText7"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/editText5"
-            android:layout_width="393dp"
-            android:layout_height="41dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="请输入店名"
             android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="44dp" />
+            app:layout_constraintBottom_toTopOf="@+id/editText6"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="316dp"
+            app:layout_constraintGuide_percent="0.36" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

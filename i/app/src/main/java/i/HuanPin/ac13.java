@@ -32,9 +32,8 @@ public class ac13 extends Activity implements View.OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-		l.setBackgroundColor(0xffffffcc);
 		l.addView(e=new EditText(this));e.setHint("请输入反馈信息");
-		l.addView(b=new Button(this));b.setText("添加反馈信息");b.setOnClickListener(this);
+		l.addView(b=new bu(this,"添加反馈信息"));b.setOnClickListener(this);
 		l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
 		l2=new ListView(this);l.addView(l2);
 		l2.setAdapter(c=new ba());

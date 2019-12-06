@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,26 +39,28 @@ public class ac extends Activity implements View.OnClickListener
     protected void onCreate(Bundle savedInstanceState)
     {try{
         super.onCreate(savedInstanceState);
+        w=getWindowManager().getDefaultDisplay().getWidth();
         //*
         LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-        l.setBackgroundColor(0xffffffcc);
+        l.setBackgroundColor(0xffede387);
         //l.addView(i,-2,-2);不行
         //l.addView(i,new LinearLayout.LayoutParams(-2,-2,1));也不行
-        w=getWindowManager().getDefaultDisplay().getWidth();
-        ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i,-1,w/2);
-        l.addView(e=new EditText(this));l.addView(e2=new EditText(this));
-        l.addView(b=new Button(this));l.addView(b2=new Button(this));
+        ImageView i=new ImageView(this);i.setImageResource(R.drawable.i);l.addView(i,-1,w*2/3);
+        LinearLayout.LayoutParams p2=new LinearLayout.LayoutParams(-1,-2),p3=new LinearLayout.LayoutParams(-1,-2);
+        int j=ac.w/6,k=ac.w/64;p2.setMargins(j,0,j,0);
+        j=ac.w/4;p3.setMargins(j,k,j,k);
+        l.addView(e=new EditText(this),p2);l.addView(e2=new EditText(this),p2);
+        l.addView(b=new bu(this,"登录"),p3);l.addView(b2=new bu(this,"注册"),p3);
         e.setHint("请输入账号");e2.setHint("请输入密码");e2.setTransformationMethod(p=PasswordTransformationMethod.getInstance());
-        b.setText("登录");b2.setText("注册");
         b.setOnClickListener(this);b2.setOnClickListener(this);
         l.addView(t=new TextView(this));t.setTextColor(0xffff0000);t.setGravity(Gravity.CENTER);
         //*/
         /*
         setContentView(R.layout.l1denglu);
-        e=findViewById(R.id.e);e2=findViewById(R.id.e2);
-        b=findViewById(R.id.b);b2=findViewById(R.id.b2);
+        e=findViewById(R.id.l1e);e2=findViewById(R.id.l1e2);
+        b=findViewById(R.id.l1b);b2=findViewById(R.id.l1b2);
         b.setOnClickListener(this);b2.setOnClickListener(this);
-        t=findViewById(R.id.t);
+        t=findViewById(R.id.l1t);
         //*/
         Thread t=new Thread(new Runnable()
         {
@@ -94,13 +98,36 @@ public class ac extends Activity implements View.OnClickListener
         }).start();
     }
     void f(String s){u=++i+"："+s;h.sendEmptyMessage(0);}
+    static Bitmap s2b(String s)
+    {
+        byte[]b=Base64.decode(s,Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(b,0,b.length);
+    }
+    static String b2s(Bitmap b)
+    {
+        ByteArrayOutputStream o= new ByteArrayOutputStream();
+        b.compress(Bitmap.CompressFormat.PNG, 100,o);
+        return Base64.encodeToString(o.toByteArray(),Base64.DEFAULT);
+    }
 }
 class bu extends Button
 {
-    Context c;Bitmap b;
-    bu(Context a,int i)
+    bu(Context c,String s)
     {
-        super(a);c=a;b=BitmapFactory.decodeResource(c.getResources(),i);
+        super(c);setText(s);setBackgroundColor(0xffde8100);
+        int i=ac.w/64;
+        LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(-1,-2);
+        p.setMargins(0,i,0,i);
+        setLayoutParams(p);
+    }
+}
+class bu2 extends bu
+{
+    Bitmap b;
+    bu2(Context c,String s,int i)
+    {
+        super(c,s);
+        b=BitmapFactory.decodeResource(c.getResources(),i);
     }
     protected void onDraw(Canvas c)
     {

@@ -30,13 +30,13 @@ public class ac15 extends Activity implements View.OnClickListener
 	{
 		super.onCreate(savedInstanceState);
 		LinearLayout l=new LinearLayout(this);setContentView(l);l.setOrientation(LinearLayout.VERTICAL);
-		l.setBackgroundColor(0xffffffcc);
 		l.addView(t=new TextView(this));
 		t.setText("有些地址无法正确识别，如：福州大学32#107、福州大学东3、福州大学东3-201、福州大学东3楼201\n"
 		+"如果看地图时发现有错，请把地址改为较容易识别的地址，如：福州大学、福州大学32号楼、福州大学玫瑰餐厅、福州大学教学楼、福州大学东3楼、福州大学图书馆");
+		t.setBackgroundColor(0xffde8100);
 		l.addView(e=new EditText(this));e.setHint("请输入起始地址");
 		l.addView(e2=new EditText(this));e2.setHint("请输入终点地址");
-		l.addView(b=new Button(this));b.setText("在地图上查看路线");b.setOnClickListener(this);
+		l.addView(b=new bu(this,"在地图上查看路线"));b.setOnClickListener(this);
 		l.addView(w=new WebView(this),-1,-1);
 		//避免使用别的浏览器打开
 		w.setWebViewClient(new WebViewClient());
