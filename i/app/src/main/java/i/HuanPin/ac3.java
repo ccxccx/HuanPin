@@ -60,7 +60,7 @@ public class ac3 extends Activity implements View.OnClickListener
 		}
 	}
 	protected void onCreate(Bundle savedInstanceState)
-	{
+	{try{
 		super.onCreate(savedInstanceState);
 		//*
 		l3=new RelativeLayout(this);setContentView(l3);
@@ -75,6 +75,15 @@ public class ac3 extends Activity implements View.OnClickListener
 		l2.addView(b20=new li(this,R.drawable.qita,"其他功能"),p);b20.setOnClickListener(this);
 		if(ac10.d){ac10.d=false;b4.callOnClick();}
 		else b3.callOnClick();
+		Thread t2=new Thread(new Runnable()
+		{
+			public void run()
+			{try{
+				ResultSet r=s.executeQuery("select 头像 from t1 where 账号='"+ac.a+"'");
+				r.next();c=ac.s2b(r.getString(1));r.close();
+			}catch(Exception e){e.printStackTrace();}}
+		});
+		t2.start();t2.join();
 		//*/
 		/*
 		setContentView(R.layout.l3);
@@ -83,7 +92,7 @@ public class ac3 extends Activity implements View.OnClickListener
 		b9.setOnClickListener(this);b2.setOnClickListener(this);b3.setOnClickListener(this);
 		b4.setOnClickListener(this);b5.setOnClickListener(this);b6.setOnClickListener(this);
 		//*/
-	}
+	}catch(Exception e){e.printStackTrace();}}
 	public void onClick(View v)
 	{try{
 		if(v==b)startActivity(new Intent(ac3.this,ac4.class));
@@ -154,31 +163,19 @@ public class ac3 extends Activity implements View.OnClickListener
 			l=new LinearLayout(this);l3.addView(l,p3);l.setOrientation(LinearLayout.VERTICAL);
 			//l3.removeView(l2);l3.addView(l2,p2);
 			l2.bringToFront();
-			LinearLayout l4=new LinearLayout(this);l.addView(l4);l4.setBackgroundColor(0xffede387);
+			LinearLayout l4=new LinearLayout(this);l.addView(l4,-1,ac.w/4);l4.setBackgroundColor(0xffede387);
 			i2=new ImageView(this);
-			l4.addView(i2,new LinearLayout.LayoutParams(0,ac.w/4,1));
-			if(c==null)
-			{
-				Thread t=new Thread(new Runnable()
-				{
-					public void run()
-					{try{
-						ResultSet r=s.executeQuery("select 头像 from t1 where 账号='"+ac.a+"'");
-						r.next();c=ac.s2b(r.getString(1));r.close();
-					}catch(Exception e){e.printStackTrace();}}
-				});
-				t.start();t.join();
-			}
 			i2.setImageBitmap(c);
+			l4.addView(i2,ac.w*c.getWidth()/c.getHeight()/4,-1);
 			TextView t2=new TextView(this);
-			l4.addView(t2,new LinearLayout.LayoutParams(0,ac.w/4,3));
+			l4.addView(t2,new LinearLayout.LayoutParams(0,-1,1));
 			t2.setText("账号："+ac.a);t2.setGravity(Gravity.CENTER);
 			l.addView(b22=new bu2(this,"修改我的信息",R.drawable.wode));b22.setOnClickListener(this);
 			l.addView(b=new bu2(this,"添加商店",R.drawable.tianjia));b.setOnClickListener(this);
 			l.addView(b2=new bu2(this,"我的商店",R.drawable.sandian));b2.setOnClickListener(this);
 			l.addView(b5=new bu2(this,"我的拼单",R.drawable.pindan));b5.setOnClickListener(this);
 			l.addView(b6=new bu2(this,"我的地址",R.drawable.dizhi));b6.setOnClickListener(this);
-			l.addView(b21=new bu(this,"反馈信息"));b21.setOnClickListener(this);
+			l.addView(b21=new bu2(this,"反馈信息",R.drawable.fankui));b21.setOnClickListener(this);
 			/*l.addView(b10=new Button(this));b10.setText("开通超级会员（每月可领取红包）（功能未实现）");b10.setOnClickListener(this);
 			LinearLayout l2=new LinearLayout(this);l.addView(l2);
 			l2.addView(b11=new Button(this),p);b11.setText("我的红包（功能未实现）");b11.setOnClickListener(this);
@@ -230,6 +227,7 @@ public class ac3 extends Activity implements View.OnClickListener
 	protected void onActivityResult(int requestCode,int resultCode,Intent i)
 	{try{
 		i2.setImageBitmap(c);
+		i2.setLayoutParams(new LinearLayout.LayoutParams(ac.w*c.getWidth()/c.getHeight()/4,-1));
 	}catch(Exception e){e.printStackTrace();}}
 	public boolean onKeyDown(int i,KeyEvent e)
 	{

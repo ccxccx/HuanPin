@@ -87,7 +87,7 @@ public class ac2 extends Activity implements View.OnClickListener
                 {try{
                     s.execute("insert into t1 values('"+e.getText()+"','"
                             +a+"','"+e4.getText()+"','"+ac.b2s(d)+"')");
-                    startActivity(new Intent(ac2.this,ac.class));
+                    finish();
                 }catch(Exception e)
                 {
                     e.printStackTrace();

@@ -36,7 +36,7 @@ public class ac14 extends Activity implements View.OnClickListener
 	{
 		public void handleMessage(Message m){t.setText(u);}
 	};
-	ImageView i2;Bitmap g;
+	ImageView i2;Bitmap g=ac3.c;
 	protected void onCreate(Bundle savedInstanceState)
 	{try{
 		super.onCreate(savedInstanceState);
@@ -56,12 +56,12 @@ public class ac14 extends Activity implements View.OnClickListener
 		});
 		t3.start();
 		t3.join();
-		LinearLayout l4=new LinearLayout(this);l.addView(l4);l4.setBackgroundColor(0xffede387);
+		LinearLayout l4=new LinearLayout(this);l.addView(l4,-1,ac.w/4);l4.setBackgroundColor(0xffede387);
 		i2=new ImageView(this);
-		l4.addView(i2,new LinearLayout.LayoutParams(0,ac.w/4,1));
-		i2.setImageBitmap(ac3.c);
+		i2.setImageBitmap(g);
+		l4.addView(i2,ac.w*g.getWidth()/g.getHeight()/4,-1);
 		TextView t2=new TextView(this);
-		l4.addView(t2,new LinearLayout.LayoutParams(0,ac.w/4,3));
+		l4.addView(t2,new LinearLayout.LayoutParams(0,-1,1));
 		t2.setText("账号："+ac.a);t2.setGravity(Gravity.CENTER);
 		LinearLayout l3=new LinearLayout(this);l.addView(l3);
 		LinearLayout.LayoutParams p=new LinearLayout.LayoutParams(0,-2,1),p2=new LinearLayout.LayoutParams(0,-2,4);
@@ -99,6 +99,7 @@ public class ac14 extends Activity implements View.OnClickListener
 		String a=c.getString(c.getColumnIndex(MediaStore.Images.Media.DATA));
 		Bitmap f=BitmapFactory.decodeFile(a);
 		i2.setImageBitmap(g=ThumbnailUtils.extractThumbnail(f,f.getWidth()*200/f.getHeight(),200));
+		i2.setLayoutParams(new LinearLayout.LayoutParams(ac.w*g.getWidth()/g.getHeight()/4,-1));
 		//不能用in.reset();，因为FileInputStream不支持reset();，小心!!!!!!!!!
 		c.close();
 	}catch(Exception e){e.printStackTrace();}}
