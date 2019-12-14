@@ -43,7 +43,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/ic_logo_foreground" />
+            android:src="@drawable/i" />
 
         <EditText
             android:id="@+id/l1e"
